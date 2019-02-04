@@ -117,7 +117,7 @@ def game_hash
   }
 end
 
-#### helper methods ###############################################################
+############ helper methods ###############################################################
 def players
   #method to combine our players data in one hash
   home = game_hash[:home][:players]
