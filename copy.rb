@@ -119,16 +119,12 @@ end
 
 #### helper methods ###############################################################
 def players
-  #method to combine our players data in one hash
   home = game_hash[:home][:players]
   away = game_hash[:away][:players]
-  # using merge to combine hashes, combines players since can only have unique key
   home.merge(away)
 end
 
 def find_player_stats(name)
-  # players[name]
-  # retrieve given player's stats
   game_hash.each do |location, team_data|
     team_data[:players].each do |player, stats|
       if player === name
@@ -140,22 +136,18 @@ end
 
 def find_team(team_name)
   team = nil
-  # returns given team's data
   game_hash.each do |location, team_data|
     if team_data[:team_name] === team_name
       team = team_data
     end
   end
-
   team
 end
 
-def team_points(team)
-  #team = team_data[:players], will return team's total points
+def team_points(team) #team = team_data[:players]
   score = 0
 
     team.each do |player, stats|
-      # puts "#{stats[:points]} ++"
       points = stats[:points]
       score += points
     end
@@ -167,13 +159,11 @@ end
 ################################################################################
 
 def num_points_scored(name)
-  #method to determine points scored by a player
   player = find_player_stats(name)
   player[:points]
 end
 
 def shoe_size(name)
-  #find a player's shoe size
   player = find_player_stats(name)
   player[:shoe]
 end
@@ -188,11 +178,6 @@ def team_names
 
   game_hash.each do |location, team_data|
     teams.push(team_data[:team_name])
-    # team_data.each do |attribute, data|
-    #   if attribute === :team_name
-    #     teams.push(data)
-    #   end
-    # end
   end
 
   teams
@@ -204,12 +189,6 @@ def player_numbers(team_name)
 
   players_hash.each do |player, data|
     numbers.push(data[:number]);
-
-    # data.each do |attribute, val|
-    #   if attribute === :number
-    #     numbers.push(val)
-    #   end
-    # end
   end
 
   numbers
@@ -251,8 +230,6 @@ def most_points_scored
   max_points
 end
 
-# puts "#{most_points_scored}"
-
 def winning_team
   home_points = 0
   away_points = 0
@@ -274,7 +251,6 @@ def winning_team
   end
 end
 
-# puts "#{winning_team}"
 
 def player_with_longest_name
   longest = ""
@@ -287,9 +263,6 @@ def player_with_longest_name
 
   longest
 end
-
-# puts "#{player_with_longest_name}"
-
 
 
 ######################### SuperBonus ###############################

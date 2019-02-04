@@ -116,38 +116,3 @@ def game_hash
 end
 
 # puts "#{game_hash}"
-
-def team_points(team) #team = team_data[:players]
-  score = 0
-
-    team.each do |player, stats|
-      # puts "#{stats[:points]} ++"
-      points = stats[:points]
-      score += points
-    end
-
-  score
-end
-
-def winning_team
-  home_points = 0
-  away_points = 0
-
-  game_hash.each do |location, team_data|
-    if location === :home
-      home_points = team_points(team_data[:players])
-    elsif location === :away
-      away_points = team_points(team_data[:players])
-    end
-  end
-
-  winners = [home_points, away_points].max
-
-  if winners === home_points
-    game_hash[:home][:team_name]
-  else
-    game_hash[:away][:team_name]
-  end
-end
-
-puts "#{winning_team}"
